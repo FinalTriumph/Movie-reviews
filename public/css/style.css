@@ -7,3 +7,6 @@ body {
     background-color: #fff;
     padding: 1em;
 }
+#header img {
+    max-height: 5em;
+}

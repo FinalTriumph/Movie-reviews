@@ -28,8 +28,20 @@ Route::set('fb-callback', function() {
     Facebook::getCredentials();
 });
 
+Route::set('google-login', function() {
+    Google::login();
+});
+
+Route::set('google-callback', function() {
+    Google::getCredentials();
+});
+
 Route::set('twitter-logout', function() {
     Logout::logoutUser();
+});
+
+Route::set('add-review', function() {
+    Review::add();
 });
 
 ?>

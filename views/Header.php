@@ -12,7 +12,8 @@
     } else {
         ?>
         <a href="twitter-login">Sign in with Twitter</a> | 
-        <a href="facebook-login">Sign in with Facebook</a>
+        <a href="facebook-login">Sign in with Facebook</a> |
+        <a href="google-login">Sign in with Google</a>
         <?php
     }
     ?>
