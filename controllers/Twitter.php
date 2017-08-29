@@ -42,7 +42,13 @@ class Twitter extends Controller {
         
         $connection = new TwitterOAuth($consumer_key, $consumer_secret, $request_token['oauth_token'], $request_token['oauth_token_secret']);
         
-        $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $_REQUEST['oauth_verifier']]);
+        try {
+            $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $_REQUEST['oauth_verifier']]);
+        } catch (Abraham\TwitterOAuth\TwitterOAuthException $e){
+            echo 'Twitter Oauth authorization error: ' . $e->getMessage();
+            echo '<br /><a href="/">Go to the Movie Reviews homepage.</a>';
+            exit;
+        }
         
         $getUser = new TwitterOAuth($consumer_key, $consumer_secret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
         
@@ -53,7 +59,7 @@ class Twitter extends Controller {
         $picture = $user->profile_image_url_https;
         
         if (!Database::query('SELECT * FROM users WHERE id=:id', array(':id' => $id))) {
-            Database::query('INSERT INTO users VALUES (:id, "twitter", :username, :profileimg)', array(':id' => $id, ':username' => $name, ':profileimg' => $picture));
+            Database::query('INSERT INTO users VALUES (:id, "Twitter", :username, :profileimg)', array(':id' => $id, ':username' => $name, ':profileimg' => $picture));
         } else {
             Database::query('UPDATE users SET username=:username, profileimg=:profileimg WHERE id=:id', array(':id' => $id, ':username' => $name, ':profileimg' => $picture));
         }
