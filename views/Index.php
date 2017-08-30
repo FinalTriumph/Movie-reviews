@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Welcome</title>
+  <title>Movie Reviews</title>
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="public/css/style.css">
 </head>
 

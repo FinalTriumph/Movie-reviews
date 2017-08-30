@@ -12,7 +12,8 @@ if (!isset($_SESSION['token'])) {
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Add Review</title>
+  <title>My Reviews | Movie Reviews</title>
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="public/css/style.css">
 </head>
 

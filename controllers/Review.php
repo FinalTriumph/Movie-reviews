@@ -105,7 +105,6 @@ class Review extends Controller {
                 if ($review['user_id'] !== $user_id) {
                     die('Unauthorized Page');
                 }
-                //action
                 Database::query('DELETE FROM reviews WHERE id=:id', array(':id'=>$_POST['reviewid']));
             }
             session_unset();

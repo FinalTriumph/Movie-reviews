@@ -1,7 +1,15 @@
 body {
-    background-color: #ddd;
+    background-color: #eee;
     text-align: center;
     margin: 0;
+    font-family: 'PT Sans', 'Arial';
+}
+a {
+    text-decoration: none;
+    color: #222;
+}
+a:hover {
+    color: #000;
 }
 .pull-left {
     float: left;
@@ -12,28 +20,99 @@ body {
 #header {
     background-color: #fff;
     padding: 1em;
+    padding-bottom: 0.6em;
+    text-align: right;
+    border-bottom: 0.4em solid #ddd;
 }
-#header img {
-    max-height: 5em;
+#header a {
+    display: inline-block;
+    padding: 1em 1.5em;
+    margin: -1em 0em;
+    border-bottom: 0.4em solid #ddd;
 }
+#header a:hover {
+    border-color: #444;
+    background-color: #fafafa;
+}
+#header_user_img {
+    height: 2em;
+    margin: -1.3em 0.5em -0.7em 0em;
+}
+.header_arrow {
+    height: 0.5em;
+    margin-left: 0.5em;
+}
+#profile_options {
+    display: inline-block;
+    cursor:pointer;
+    border-bottom: 0.4em solid #ddd;
+    padding: 1em 1.5em;
+    margin: -1em 0em;
+}
+#profile_options:hover {
+    border-color: #444;
+    background-color: #fafafa;
+}
+#profile_options_dropdown {
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    border-top: 1px solid #444;
+    top: 3.7em;
+    right: 1em;
+}
+#profile_options_dropdown a {
+    display: block;
+    background-color: #fff;
+    margin: 0;
+    padding: 1em 3em;
+    padding-left: 5em;
+}
+#profile_options_dropdown a:hover {
+    background-color: #fafafa;
+}
+.sign_in_icon {
+    height: 1.5em;
+    margin: -1.1em 1.5em -0.4em -2em;
+}
+.header_sign_in_icon {
+    height: 1.2em;
+    margin: -0.9em 1em -0.3em 1em;
+}
+.signed_in_icon {
+    height: 0.9em;
+    margin: -0.7em 0.3em -0.1em 0.5em;
+}
+.rev_div_icon {
+    height: 0.9em;
+    margin: -0.7em 0.3em -0.1em 0em;
+}
+/*//////////////////////////////*/
 .review_div {
-    width: 15em;
+    width: 20em;
     display: inline-block;
     vertical-align: top;
-    height: 20em;
+    height: 18.5em;
+    padding-top: 1.5em;
     background-color: #fff;
-    border: 1px solid #777;
+    border: 1px solid #ddd;
     text-align: justify;
 }
+.review_div h3 {
+    margin: 0;
+}
 .my_review_div {
-    height: 22em;
+    height: 20em;
 }
 .review_text {
-    height: 80%;
+    height: 14.5em;
+    padding: 0 1.5em;
+    overflow: hidden;
 }
 .review_user {
-    height: 20%;
-    border-top: 1px solid #777;
+    //height: 1.5em;
+    padding: 0.5em 1em;
+    border-top: 1px solid #ddd;
     text-align: left;
 }
 .my_review_text {
@@ -49,5 +128,7 @@ body {
     height: 18%;
 }
 .rev_auth_img {
-    height: 2em;
+    height: 2.4em;
+    margin-top: 0.1em;
+    margin-right: 0.5em;
 }
