@@ -7,6 +7,8 @@ function __autoload($class_name) {
         require_once './classes/'.$class_name.'.php';
     } else if (file_exists('./controllers/'.$class_name.'.php')) {
         require_once './controllers/'.$class_name.'.php';
+    } else if (file_exists('./controllers/auth/'.$class_name.'.php')) {
+        require_once './controllers/auth/'.$class_name.'.php';
     }
     
 }

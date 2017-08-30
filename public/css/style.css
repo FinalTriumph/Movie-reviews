@@ -3,10 +3,51 @@ body {
     text-align: center;
     margin: 0;
 }
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
 #header {
     background-color: #fff;
     padding: 1em;
 }
 #header img {
     max-height: 5em;
+}
+.review_div {
+    width: 15em;
+    display: inline-block;
+    vertical-align: top;
+    height: 20em;
+    background-color: #fff;
+    border: 1px solid #777;
+    text-align: justify;
+}
+.my_review_div {
+    height: 22em;
+}
+.review_text {
+    height: 80%;
+}
+.review_user {
+    height: 20%;
+    border-top: 1px solid #777;
+    text-align: left;
+}
+.my_review_text {
+    height: 70%;
+}
+.my_review_user {
+    height: 12%;
+    border-top: 1px solid #777;
+    border-bottom: 1px solid #777;
+    text-align: left;
+}
+.my_review_buttons {
+    height: 18%;
+}
+.rev_auth_img {
+    height: 2em;
 }

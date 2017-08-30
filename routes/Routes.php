@@ -44,4 +44,20 @@ Route::set('add-review', function() {
     Review::add();
 });
 
+Route::set('store-review', function() {
+    Review::store();
+});
+
+Route::set('edit-review', function() {
+    Review::edit();
+});
+
+Route::set('update-review', function() {
+    Review::update();
+});
+
+Route::set('delete-review', function() {
+    Review::deleteReview();
+});
+
 ?>

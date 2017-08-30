@@ -15,5 +15,8 @@
 <body>
   <?php include('./views/Header.php'); ?>
   <h1>This is welcome route</h1>
+  
+<?php include('./views/Footer.php'); ?>
+
 </body>
 </html>

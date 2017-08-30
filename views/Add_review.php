@@ -1,3 +1,13 @@
+<?php
+
+if (!isset($_SESSION['token'])) {
+  $cstrong = true;
+  $token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+  $_SESSION['token'] = $token;
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +25,7 @@
 <body>
   <?php include('./views/Header.php'); ?>
   <h2>Add new movie review</h2>
-  <form id="new_review_form">
+  <form action="store-review" method="post" id="new_review_form">
     <p1>Title:</p1>
     <input type="text" name="title" placeholder="Title ..." required/>
     <p1>Year:</p1>
@@ -63,7 +73,11 @@
     <p1>Review:</p1><br />
     <textarea name="review" placeholder="Review ..." required/></textarea>
     <br />
+    <input type="hidden" name="nocsrf" value="<?php echo $_SESSION['token']; ?>">
     <input type="submit" value="Add">
   </form>
+  
+<?php include('./views/Footer.php'); ?>  
+  
 </body>
 </html>
