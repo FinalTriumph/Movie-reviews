@@ -10,7 +10,6 @@ function __autoload($class_name) {
     } else if (file_exists('./controllers/auth/'.$class_name.'.php')) {
         require_once './controllers/auth/'.$class_name.'.php';
     }
-    
 }
 
 require_once('./routes/Routes.php');

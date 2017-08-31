@@ -45,9 +45,7 @@ class Twitter extends Controller {
         try {
             $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $_REQUEST['oauth_verifier']]);
         } catch (Abraham\TwitterOAuth\TwitterOAuthException $e){
-            echo 'Twitter Oauth authorization error: ' . $e->getMessage();
-            echo '<br /><a href="/">Go to the Movie Reviews homepage.</a>';
-            exit;
+            header("location: /");
         }
         
         $getUser = new TwitterOAuth($consumer_key, $consumer_secret, $access_token['oauth_token'], $access_token['oauth_token_secret']);

@@ -2,6 +2,7 @@ body {
     background-color: #eee;
     text-align: center;
     margin: 0;
+    margin-bottom: 100px;
     font-family: 'PT Sans', 'Arial';
 }
 a {
@@ -56,8 +57,9 @@ a:hover {
 #profile_options_dropdown {
     position: absolute;
     display: none;
+    z-index: 10;
     background-color: #fff;
-    border-top: 1px solid #444;
+    //border-top: 1px solid #444;
     top: 3.7em;
     right: 1em;
 }
@@ -89,14 +91,14 @@ a:hover {
 }
 /*//////////////////////////////*/
 .review_div {
-    width: 20em;
+    width: 15.5em;
     display: inline-block;
     vertical-align: top;
-    height: 18.5em;
-    padding-top: 1.5em;
+    height: 27.2em;
     background-color: #fff;
     border: 1px solid #ddd;
     text-align: justify;
+    position: relative;
 }
 .review_div h3 {
     margin: 0;
@@ -104,15 +106,36 @@ a:hover {
 .my_review_div {
     height: 20em;
 }
-.review_text {
-    height: 14.5em;
-    padding: 0 1.5em;
+.review_poster_image {
+    height: 23.5em;
+}
+.review_image {
+    height: 23.5em;
+    padding: 0;
     overflow: hidden;
+    border-bottom: 1px solid #ddd;
+}
+.review_text {
+    height: 20.5em;
+    padding: 1.5em;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+}
+.review_text_hidden {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 .review_user {
-    //height: 1.5em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     padding: 0.5em 1em;
-    border-top: 1px solid #ddd;
     text-align: left;
 }
 .my_review_text {
@@ -131,4 +154,11 @@ a:hover {
     height: 2.4em;
     margin-top: 0.1em;
     margin-right: 0.5em;
+}
+.review_star_icon {
+    height: 0.8em;
+}
+.stars_p {
+    font-size: 1.1em;
+    margin-top: -0.1em;
 }
