@@ -60,4 +60,8 @@ Route::set('delete-review', function() {
     Review::deleteReview();
 });
 
+Route::set('review', function() {
+    Review::oneReview();
+});
+
 ?>

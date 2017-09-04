@@ -18,7 +18,14 @@
             default: $networkImage = "";
         }
         
-        echo "<div id='profile_options'><img src='".$user_info['profileimg']."' id='header_user_img'/><p1>".$networkImage." ".$user_info['username']." <span id='header_arrow_span'><img src='http://i.imgur.com/bFeYehs.png' class='header_arrow'></span></p1></div>
+        echo "<div id='profile_options'>
+                <img src='".$user_info['profileimg']."' id='header_user_img'/>
+                <p1>".$networkImage." ".$user_info['username']." 
+                    <span id='header_arrow_span'>
+                        <img src='http://i.imgur.com/bFeYehs.png' class='header_arrow'>
+                    </span>
+                </p1>
+            </div>
         <div id='profile_options_dropdown'>
             <a href='#'>New Review</a>
             <a href='twitter-logout'>Logout</a>

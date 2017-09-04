@@ -6,6 +6,14 @@ class Review extends Controller {
         $reviews = Database::query('SELECT * FROM reviews ORDER BY created_at DESC');
         return $reviews;
     }
+    
+    public static function oneReview() {
+        if (!isset($_GET['id'])) {
+            header("location: /reviews");
+        } else {
+            echo 'this is route to one review with id = '.$_GET['id'];
+        }
+    }
     public static function myReviews() {
         if (Login::isLoggedin()) {
             $user_id = Login::isLoggedin();
