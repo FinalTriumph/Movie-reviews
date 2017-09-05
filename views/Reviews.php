@@ -18,6 +18,36 @@
   
   include('./views/Header.php');
   
+  ?>
+  <div id="genres" class="pull-left">
+    <div class="genres_options">
+      <a href="genre?genre=Action"><button>Action</button></a>
+      <a href="genre?genre=Adventure"><button>Adventure</button></a>
+      <a href="genre?genre=Animation"><button>Animation</button></a>
+      <a href="genre?genre=Biography"><button>Biography</button></a>
+      <a href="genre?genre=Comedy"><button>Comedy</button></a>
+      <a href="genre?genre=Crime"><button>Crime</button></a>
+      <a href="genre?genre=Documentary"><button>Documentary</button></a>
+      <a href="genre?genre=Drama"><button>Drama</button></a>
+      <a href="genre?genre=Family"><button>Family</button></a>
+      <a href="genre?genre=Fantasy"><button>Fantasy</button></a>
+      <a href="genre?genre=History"><button>History</button></a>
+      <a href="genre?genre=Horror"><button>Horror</button></a>
+      <a href="genre?genre=Musical"><button>Musical</button></a>
+      <a href="genre?genre=Mystery"><button>Mystery</button></a>
+      <a href="genre?genre=Romance"><button>Romance</button></a>
+      <a href="genre?genre=Sci-Fi"><button>Sci-Fi</button></a>
+      <a href="genre?genre=Sport"><button>Sport</button></a>
+      <a href="genre?genre=Thriller"><button>Thriller</button></a>
+      <a href="genre?genre=War"><button>War</button></a>
+      <a href="genre?genre=Western"><button>Western</button></a>
+    </div>
+    <div class="genres_toggle">
+      <p1>Genres</p1>
+    </div>
+  </div>
+  <?php
+  
   $reviews = Review::allReviews();
   foreach ($reviews as $review) {
     $user = Login::userinfo($review['user_id']);
@@ -67,12 +97,12 @@
     }
     echo '<div class="review_text review_text_hidden">
             <a href="#"><h3>'.$review['title'].' ('.$review['year'].')</h3></a>
-            <a href="#"><p1 class="pull-left"><em>'.$review['genre'].'</em></p1></a><br />
+            <a href="genre?genre='.$review['genre'].'"><p1 class="pull-left"><em>'.$review['genre'].'</em></p1></a><br />
             <a href="review?id='.$review['id'].'"><p1>'.$reviewText.'</p1></a><br />
           </div>
           <div class="review_user">
             <img src="'.$user['profileimg'].'" class="rev_auth_img pull-left" />
-            <a href="#"><p1>'.$networkImage.' '.$user['username'].'</p1></a><br />
+            <a href="user?id='.$user['id'].'"><p1>'.$networkImage.' '.$user['username'].'</p1></a><br />
             <p1><small>'.$timeReady.'</small></p1>
             <p1 class="pull-right stars_p"><img src="http://i.imgur.com/wHiJDFU.png" class="review_star_icon"> '.$review['stars'].'</p1><br />
           </div>

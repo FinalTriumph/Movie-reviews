@@ -24,8 +24,20 @@ $('#profile_options, #profile_options_dropdown').hover(function() {
         $("#profile_options").css('border-color', '#691a99');
         $("#profile_options").css('color', '#ddd');
     });
+    
+$('.genres_toggle').click(function() {
+    if ($(".genres_options").is(':visible')) {
+        $(".genres_options").hide(200);
+    } else {
+        $('.genres_options').show(200).css('display', 'inline-block');
+    }
+});
+    
 $(document).ready(function() {
     $("#profile_options_dropdown").css("top", $("#header").outerHeight());
+    
+    var hrWidth = $(".single_post_hr").outerWidth();
+    $(".single_review_user_info").css("width", hrWidth);
 });
     
 </script>

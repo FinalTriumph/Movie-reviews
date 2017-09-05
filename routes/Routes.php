@@ -64,4 +64,12 @@ Route::set('review', function() {
     Review::oneReview();
 });
 
+Route::set('genre', function() {
+    Review::genre();
+});
+
+Route::set('user', function() {
+    User::showProfile();
+});
+
 ?>

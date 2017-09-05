@@ -24,11 +24,19 @@ if (!isset($_SESSION['token'])) {
 </style>
 
 <body>
-  <?php include('./views/Header.php'); ?>
-  <a href="/add-review"><button class="add_new_review_btn">Add New Review</button></a>
-  <br />
-  <?php
+  <?php include('./views/Header.php'); 
   $reviews = Review::myReviews();
+  
+  if (count($reviews)) {
+    echo '<a href="/add-review"><button class="add_new_review_btn">Add New Review</button></a>
+    <br />';
+  } else {
+    echo '<a href="/add-review"><button class="add_new_review_btn add_first_review_btn">Add First Review</button></a>
+    <br />';
+  }
+  
+  
+  
   $user_id = Login::isLoggedin();
   $user = Login::userinfo($user_id);
   foreach ($reviews as $review) {
@@ -78,18 +86,16 @@ if (!isset($_SESSION['token'])) {
     }
     echo '<div class="review_text review_text_hidden">
             <a href="#"><h3>'.$review['title'].' ('.$review['year'].')</h3></a>
-            <a href="#"><p1 class="pull-left"><em>'.$review['genre'].'</em></p1></a><br />
+            <a href="genre?genre='.$review['genre'].'"><p1 class="pull-left"><em>'.$review['genre'].'</em></p1></a><br />
             <a href="review?id='.$review['id'].'"><p1>'.$reviewText.'</p1></a><br />
           </div>
           <div class="review_user">
             <p1><small>'.$timeReady.'</small></p1>
             <p1 class="pull-right stars_p"><img src="http://i.imgur.com/wHiJDFU.png" class="review_star_icon"> '.$review['stars'].'</p1><br />
             <div class="my_review_buttons">
-              <form action="edit-review" method="POST" class="edit_review_form">
-                <input type="hidden" name="reviewid" value="'.$review['id'].'" />
-                <input type="hidden" name="nocsrf" value="'.$_SESSION['token'].'" />
-                <input type="Submit" value="Edit" class="edit_btn" />
-              </form>
+              <div class="edit_review_form">
+                <a href="edit-review?id='.$review['id'].'"><button class="edit_btn">Edit</button></a>
+              </div>
               <form action="delete-review" method="POST" class="delete_review_form">
                 <input type="hidden" name="reviewid" value="'.$review['id'].'" />
                 <input type="hidden" name="nocsrf" value="'.$_SESSION['token'].'" />
@@ -98,42 +104,6 @@ if (!isset($_SESSION['token'])) {
             </div>
           </div>
         </div>';
-    
-    /*$reviewText = $review['review'];
-    $wordCount = 30;
-    if (count(explode(" ", $reviewText)) > $wordCount) {
-      $exploded = explode(" ", $reviewText);
-      $reviewText = "";
-      for ($i = 0; $i < $wordCount; $i++) {
-        $reviewText .= $exploded[$i]." "; 
-      }
-      $reviewText .= "...";
-    }
-    echo '
-    <div class="review_div my_review_div">
-      <div class="my_review_text">
-        <h3>'.$review['title'].' ('.$review['year'].')</h3>
-        <p1 class="pull-left"><em>'.$review['genre'].'</em></p1><br />
-        <p1>'.$reviewText.'</p1><br />
-      </div>
-      <div class="my_review_user">
-        <p1><small>'.$review['created_at'].'</small></p1>
-        <p1 class="pull-right">Stars: '.$review['stars'].'</p1><br />
-      </div>
-      <div class="my_review_buttons">
-        <form action="edit-review" method="POST">
-          <input type="hidden" name="reviewid" value="'.$review['id'].'">
-          <input type="hidden" name="nocsrf" value="'.$_SESSION['token'].'">
-          <input type="Submit" value="Edit">
-        </form>
-        <form action="delete-review" method="POST">
-          <input type="hidden" name="reviewid" value="'.$review['id'].'">
-          <input type="hidden" name="nocsrf" value="'.$_SESSION['token'].'">
-          <input type="submit" onclick="return confirm(\'Are you sure you want to delete this review?\')" value="Delete">
-        </form>
-      </div>
-    </div>
-    ';*/
   }
   ?>
 

@@ -24,8 +24,10 @@ if (!isset($_SESSION['token'])) {
 </style>
 
 <body>
-    <?php include('./views/Header.php'); ?>
-    <?php
+    <?php 
+    
+    include('./views/Header.php'); 
+    
     $user = Login::userinfo($review['user_id']);
     
     echo '

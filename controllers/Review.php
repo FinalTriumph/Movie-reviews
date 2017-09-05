@@ -11,9 +11,24 @@ class Review extends Controller {
         if (!isset($_GET['id'])) {
             header("location: /reviews");
         } else {
-            echo 'this is route to one review with id = '.$_GET['id'];
+            $review = Database::query('SELECT * FROM reviews WHERE id=:id', array(':id'=>$_GET['id']))[0];
+            $user = Login::userInfo($review['user_id']);
+            require_once("./views/Single_review.php");
         }
     }
+    
+    public static function genre() {
+        if (!isset($_GET['genre'])) {
+            header("location: /reviews");
+        } else {
+            $genre = $_GET['genre'];
+            $reviews = Database::query('SELECT * FROM reviews WHERE genre=:genre ORDER BY created_at DESC', array(':genre'=>$genre));
+            require_once("./views/Genre.php");
+        }
+    }
+    
+    
+    
     public static function myReviews() {
         if (Login::isLoggedin()) {
             $user_id = Login::isLoggedin();
@@ -79,20 +94,16 @@ class Review extends Controller {
     
     public static function edit() {
         if (Login::isLoggedin()) {
-            if (!isset($_POST['nocsrf'])) {
-                die("INVALID TOKEN");
+            if (!isset($_GET['id'])) {
+                header("location: /");
             }
-            if ($_POST['nocsrf'] !== $_SESSION['token']) {
-                die("INVALID TOKEN");
-            }
-            if ($_POST['reviewid']) {
-                $review = Database::query('SELECT * FROM reviews WHERE id=:id', array(':id'=>$_POST['reviewid']))[0];
-                $user_id = Login::isLoggedIn();
-                if ($review['user_id'] !== $user_id) {
-                    die('Unauthorized Page');
+            
+            $review = Database::query('SELECT * FROM reviews WHERE id=:id', array(':id'=>$_GET['id']))[0];
+            $user_id = Login::isLoggedIn();
+            if ($review['user_id'] !== $user_id) {
+                die('Unauthorized Page');
                 }
-            }
-            session_unset();
+            
             require_once("./views/Edit-review.php");
         } else {
             header("location: /");

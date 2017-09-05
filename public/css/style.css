@@ -4,6 +4,7 @@ body {
     margin: 0;
     margin-bottom: 100px;
     font-family: 'PT Sans', 'Arial';
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.75);
 }
 a {
     text-decoration: none;
@@ -91,6 +92,121 @@ a:hover {
     margin: -0.7em 0.3em -0.1em 0em;
 }
 /*//////////////////////////////*/
+#genres {
+    background-color: #222;
+    margin-top: 0.5em;
+    -webkit-box-shadow: 2px 0px 7px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 0px 7px -2px rgba(0,0,0,0.75);
+    box-shadow: 2px 0px 7px -2px rgba(0,0,0,0.75);
+    border-radius: 1px;
+}
+#genres button {
+    width: 100%;
+    padding: 0.6em;
+    margin: 0;
+    background-color: #222;
+    color: #eee;
+    border: 0px;
+    cursor: pointer;
+    font-family: 'PT Sans', 'Arial';
+    font-size: 0.9em;
+    text-align: left;
+    padding-left: 2em;
+    border-bottom: 1px solid #691a99;
+    border-radius: 0px;
+}
+#genres button:hover {
+    border-color: #9b26af;
+    color: #9b26af;
+}
+.genres_options,
+.genres_toggle {
+    display: inline-block;
+    vertical-align: top;
+}
+.genres_options {
+    width: 9em;
+    display: none;
+}
+.genres_options_active {
+    display: inline-block;
+}
+.genres_toggle {
+    color: #ddd;
+    background-color: #222;
+    height: 46.5em;
+    cursor: pointer;
+    text-align: center;
+    border-bottom: 1px solid #222;
+    border-radius: 1px;
+}
+.genres_toggle p1 {
+    display: block;
+    font-size: 1.1em;
+    -ms-transform: translateY(20em) rotate(-90deg); /* IE 9 */
+    -webkit-transform: translateY(20em) rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: translateY(20em) rotate(-90deg);
+}
+.genres_toggle:hover {
+    background-color: #691a99;
+    border-color: #691a99;
+}
+#genre_name {
+    color: #ddd;
+    margin-bottom: 0.3em;
+    text-align: left;
+    margin-left: 12em;
+}
+#genre_hr {
+    background-color: #444;
+    border: 1px solid #691a99;
+    margin: 0 2em 1em 2em;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
+
+#genre_no_reviews {
+    color: #ddd;
+    text-align: left;
+    margin-left: 15em;
+}
+/*/////*/
+#user_profile_username {
+    color: #ddd;
+    margin-bottom: 0.3em;
+    text-align: left;
+    margin-left: 12em;
+}
+#user_profile_hr {
+    background-color: #444;
+    border: 1px solid #691a99;
+    margin: 1em 2em 1em 2em;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
+#user_profile_img {
+    height: 2em;
+    margin: 0.5em 1em -0.5em 0em;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.5);
+}
+#user_profile_network {
+    height: 1em;
+    margin: 0.1em 0.2em -0.1em 0em; 
+}
+#review-count {
+    margin-left: 1em;
+    font-size: 0.9em;
+}
+#user_no_reviews {
+    color: #ddd;
+    text-align: left;
+    margin-left: 15em;
+}
+/*///////*/
 .review_div {
     width: 15.5em;
     display: inline-block;
@@ -169,7 +285,7 @@ a:hover {
     color: #999;
 }
 .rev_auth_img {
-    height: 2.4em;
+    height: 2.5em;
     margin-top: 0.1em;
     margin-right: 0.5em;
     border-radius: 1px;
@@ -190,7 +306,7 @@ a:hover {
     font-size: 0.9em;
     padding: 0.6em;
     background-color: #222;
-    color: #eee;
+    color: #ddd;
     border: 0;
     border-bottom: 2px solid #691a99;
     border-radius: 1px;
@@ -205,6 +321,10 @@ a:hover {
 }
 .add_new_review_btn:focus {
     outline: none;
+}
+.add_first_review_btn {
+    font-size: 1em;
+    padding: 1em;
 }
 .edit_review_form, 
 .delete_review_form {
@@ -275,7 +395,7 @@ a:hover {
     background-color: #333;
     color: #eee;
     border: 1px solid #222;
-    border-bottom: 2px solid #555;
+    border-bottom: 2px solid #691a99;
     border-radius: 1px;
 }
 #new_review_form input:focus, 
@@ -307,21 +427,106 @@ a:hover {
 }
 #new_review_form .submit_review_btn {
     width: 100%;
-    margin-top: 1.5em;
+    margin-top: 2em;
     margin-bottom: 0.5em;
     padding: 0.6em;
     font-size: 0.9em;
-    background-color: #272727;
+    background-color: #333;
     color: #eee;
     border: 0;
     border-bottom: 2px solid #691a99;
     border-radius: 1px;
     cursor: pointer;
-    -webkit-box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.5);
 }
 #new_review_form .submit_review_btn:hover {
     border-color: #9b26af;
     color: #9b26af;
+}
+/*Single review*/
+.single_review_div {
+    background-color: #222;
+    color: #ddd;
+    width: 60%;
+    min-height: 24em;
+    margin: auto;
+    text-align: left;
+    padding: 2em 3em;
+    border-radius: 1px;
+    -webkit-box-shadow: 0px 4px 7px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 7px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 7px -3px rgba(0,0,0,0.75);
+}
+.single_post_poster {
+    height: 23.5em;
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+.single_review_div h2 {
+    margin-bottom: 0em;
+    margin-left: 0.5em;
+}
+.single_review_div em {
+    margin-left: 1em;
+}
+.single_review_text {
+    margin-top: 1em;
+    text-indent: 1em;
+    text-align: justify;
+}
+.single_post_hr {
+    border: 1px solid #222;
+    border-bottom: 1px solid #691a99;
+    margin-top: 1em;
+    margin-bottom: 1.2em;
+}
+.single_review_user_info {
+    width: 100%;
+}
+.single_review_user_info small {
+    color: #999;
+}
+.single_review_div em {
+    color: #999;
+}
+.single_review_div em:hover {
+    color: #9b26af;;
+}
+/**/
+.single_review_buttons {
+    width: 100%;
+}
+.sp_edit_review_form, 
+.sp_delete_review_form {
+    display: inline-block;
+    margin: 0;
+    width: 50%;
+    margin-top: 1.5em;
+}
+.sp_edit_review_form {
+    margin-left: 0;
+}
+.sp_delete_review_form {
+    margin-right: -100%;
+}
+.sp_edit_btn, 
+.sp_delete_btn {
+    border: 0px;
+    border-radius: 0;
+    background-color: #444;
+    color: #eee;
+    width: 100%;
+    height: 100%;
+    padding: 0.5em 0em;
+    margin-bottom: 0em;
+    font-family: 'PT Sans', 'Arial';
+    cursor: pointer;
+}
+.sp_edit_btn:hover {
+    background-color: #691a99;
+}
+.sp_delete_btn:hover {
+    background-color: #7f0000;
 }
