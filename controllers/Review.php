@@ -22,8 +22,18 @@ class Review extends Controller {
             header("location: /reviews");
         } else {
             $genre = $_GET['genre'];
-            $reviews = Database::query('SELECT * FROM reviews WHERE genre=:genre ORDER BY created_at DESC', array(':genre'=>$genre));
+            $reviews = Database::query('SELECT * FROM reviews WHERE genre LIKE :genre ORDER BY created_at DESC', array(':genre'=>'%'.$genre.'%'));
             require_once("./views/Genre.php");
+        }
+    }
+    
+    public static function search() {
+        if (!isset($_GET['search'])) {
+            header("location: /reviews");
+        } else {
+            $search = $_GET['search'];
+            $reviews = Database::query('SELECT * FROM reviews WHERE title LIKE :title ORDER BY created_at DESC', array(':title'=>'%'.$search.'%'));
+            require_once("./views/Search.php");
         }
     }
     
@@ -83,7 +93,21 @@ class Review extends Controller {
             }
             /////////////////////////////////////////////////
             
-            Database::query('INSERT INTO reviews VALUES(\'\', :userid, :title, :year, :genre, :stars, :review, NOW(), :poster)', array(':userid'=>$user_id, ':title'=>htmlspecialchars($_POST['title']), ':year'=>$_POST['year'], ':genre'=>$_POST['genre'], ':stars'=>$_POST['stars'], ':review'=>htmlspecialchars($_POST['review']), ':poster'=>$poster_url));
+            $genre = $_POST['genre'];
+            
+            if (isset($_POST['genre2'])) {
+                if ($_POST['genre2'] !== $_POST['genre']) {
+                    $genre .= ", ".$_POST['genre2'];
+                }
+            }
+            
+            if (isset($_POST['genre3'])) {
+                if ($_POST['genre3'] !== $_POST['genre'] && $_POST['genre3'] !== $_POST['genre2']) {
+                    $genre .= ", ".$_POST['genre3'];
+                }
+            }
+            
+            Database::query('INSERT INTO reviews VALUES(\'\', :userid, :title, :year, :genre, :stars, :review, NOW(), :poster)', array(':userid'=>$user_id, ':title'=>htmlspecialchars($_POST['title']), ':year'=>$_POST['year'], ':genre'=>$genre, ':stars'=>$_POST['stars'], ':review'=>htmlspecialchars($_POST['review']), ':poster'=>$poster_url));
             
             session_unset();
             header('location: my-reviews');
@@ -157,7 +181,21 @@ class Review extends Controller {
                     /////////////////////////////////////////////////
                 }
                 
-                Database::query('UPDATE reviews SET title=:title, year=:year, genre=:genre, stars=:stars, review=:review, poster=:poster WHERE id=:id', array(':title'=>htmlspecialchars($_POST['title']), ':year'=>$_POST['year'], ':genre'=>$_POST['genre'], ':stars'=>$_POST['stars'], ':review'=>htmlspecialchars($_POST['review']), ':id'=>$_POST['reviewid'], ':poster'=>$poster_url));
+                $genre = $_POST['genre'];
+            
+                if (isset($_POST['genre2'])) {
+                    if ($_POST['genre2'] !== $_POST['genre']) {
+                        $genre .= ", ".$_POST['genre2'];
+                    }
+                }
+                
+                if (isset($_POST['genre3'])) {
+                    if ($_POST['genre3'] !== $_POST['genre'] && $_POST['genre3'] !== $_POST['genre2']) {
+                        $genre .= ", ".$_POST['genre3'];
+                    }
+                }
+                
+                Database::query('UPDATE reviews SET title=:title, year=:year, genre=:genre, stars=:stars, review=:review, poster=:poster WHERE id=:id', array(':title'=>htmlspecialchars($_POST['title']), ':year'=>$_POST['year'], ':genre'=>$genre, ':stars'=>$_POST['stars'], ':review'=>htmlspecialchars($_POST['review']), ':id'=>$_POST['reviewid'], ':poster'=>$poster_url));
             }
             session_unset();
             header('location: my-reviews');

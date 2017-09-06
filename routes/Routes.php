@@ -67,6 +67,9 @@ Route::set('review', function() {
 Route::set('genre', function() {
     Review::genre();
 });
+Route::set('search', function() {
+    Review::search();
+});
 
 Route::set('user', function() {
     User::showProfile();

@@ -1,5 +1,9 @@
 <div id="header">
     <a href="/" class="pull-left">Movie Reviews</a>
+    <div id="header_search_div" class="pull-left">
+        <input type="text" name="search" id="search_term" placeholder="Search by title ..." />
+        <button id="search_btn"><img src="https://i.imgur.com/VVVVBvq.png" /></button>
+    </div>
     <a href="reviews">Reviews</a>
     <?php if (Login::isLoggedin()) {
         $user_id = Login::isLoggedin();
@@ -27,7 +31,7 @@
                 </p1>
             </div>
         <div id='profile_options_dropdown'>
-            <a href='#'>New Review</a>
+            <a href='add-review'>New Review</a>
             <a href='twitter-logout'>Logout</a>
         </div>";
     } else {

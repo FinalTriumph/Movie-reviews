@@ -36,19 +36,46 @@ if (!isset($_SESSION['token'])) {
             <div class="title_inline">
                 <p1>Title:</p1><br />
                 <input type="text" name="title" placeholder="Title ..." value ="'.$review['title'].'" required /><br />
-                <p1>Genre:</p1><br />
-                <select name="genre" required>';
-                $genres = array('Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western'); 
-                for ($i = 0; $i < count($genres); $i++) {
-                    if ($genres[$i] == $review['genre']) {
-                        echo '<option selected value="'.$review['genre'].'">'.$review['genre'].'</option>';
-                    } else {
-                        echo '<option value="'.$genres[$i].'">'.$genres[$i].'</option>';
+                <p1>Genre:</p1><br />';
+                if (count(explode(', ', $review['genre'])) > 1) {
+                    $review_genres = explode(', ', $review['genre']);
+                    foreach ($review_genres as $i => $genre) {
+                        $gc = '';
+                        if ($i === 1) {
+                            $gc = 2;
+                        } else if ($i === 2) {
+                            $gc = 3;
+                        }
+                        echo '<select name="genre'.$gc.'" required>';
+                        $genres = array('Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western'); 
+                        for ($i = 0; $i < count($genres); $i++) {
+                            if ($genres[$i] == $genre) {
+                                echo '<option selected value="'.$genre.'">'.$genre.'</option>';
+                            } else {
+                                echo '<option value="'.$genres[$i].'">'.$genres[$i].'</option>';
+                            }
+                        }
+                        
+                        echo '
+                        </select>';
                     }
+                } else {
+                    echo '<select name="genre" required>';
+                    $genres = array('Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western'); 
+                    for ($i = 0; $i < count($genres); $i++) {
+                        if ($genres[$i] == $review['genre']) {
+                            echo '<option selected value="'.$review['genre'].'">'.$review['genre'].'</option>';
+                        } else {
+                            echo '<option value="'.$genres[$i].'">'.$genres[$i].'</option>';
+                        }
+                    }
+                    
+                    echo '
+                    </select>';
                 }
-                
-                echo '
-                </select>
+            echo 
+                '<button id="edit_remove_genre">-</button>
+                <button id="edit_add_genre">+</button>
             </div>
             <div class="year_inline">
                 <p1>Year:</p1><br />

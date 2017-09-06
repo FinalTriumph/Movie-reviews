@@ -88,8 +88,21 @@
                 </div>';
         }
         echo '<div class="review_text review_text_hidden">
-                <a href="#"><h3>'.$review['title'].' ('.$review['year'].')</h3></a>
-                <a href="genre?genre='.$review['genre'].'"><p1 class="pull-left"><em>'.$review['genre'].'</em></p1></a><br />
+                <a href="search?search='.$review['title'].'"><h3>'.$review['title'].' ('.$review['year'].')</h3></a>';
+                
+                if (count(explode(", ", $review['genre'])) > 1) {
+                  $genres = explode(", ", $review['genre']);
+                  foreach($genres as $genre) {
+                    echo '<a href="genre?genre='.$genre.'"><p1><em>'.$genre.'</em></p1></a>';
+                    if ($genre !== end($genres)) {
+                      echo '<p1><em class="genre_seperetaor">|</em></p1>';
+                    }
+                  }
+                } else {
+                  echo '<a href="genre?genre='.$review['genre'].'"><p1><em>'.$review['genre'].'</em></p1></a>';
+                }
+                
+                echo '<br />
                 <a href="review?id='.$review['id'].'"><p1>'.$reviewText.'</p1></a><br />
               </div>
               <div class="review_user">
@@ -106,14 +119,6 @@
   ?>
   
 <?php include('./views/Footer.php'); ?>
-<script type="text/javascript">
-  /* global $ */
-  $('.review_div').hover(function() {
-    $('.review_text_hidden', this).slideDown(500);
-  }, function() {
-    $('.review_text_hidden', this).slideUp(500);
-  });
-</script>
 
 </body>
 </html>

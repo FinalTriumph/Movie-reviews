@@ -54,6 +54,8 @@ if (!isset($_SESSION['token'])) {
         <option value="War">War</option>
         <option value="Western">Western</option>
       </select>
+      <button id="remove_genre">-</button>
+      <button id="add_genre">+</button>
     </div>
     <div class="year_inline">
       <p1>Year:</p1><br />

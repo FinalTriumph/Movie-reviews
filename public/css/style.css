@@ -2,6 +2,7 @@ body {
     background-color: #444;
     text-align: center;
     margin: 0;
+    min-width: 1100px;
     margin-bottom: 100px;
     font-family: 'PT Sans', 'Arial';
     text-shadow: 1px 1px 1px rgba(0,0,0,0.75);
@@ -13,6 +14,17 @@ a {
 a:hover {
     color: #9b26af;
 }
+button:focus {
+    outline: none;
+}
+input:focus {
+    outline: none;
+}
+/*nonsense, but I have added a lot of these.. and now I have changed my mind.. maybe I will remove them all later*/
+em {
+    font-style: normal;
+}
+/*///////*/
 .pull-left {
     float: left;
 }
@@ -90,6 +102,40 @@ a:hover {
 .rev_div_icon {
     height: 0.9em;
     margin: -0.7em 0.3em -0.1em 0em;
+}
+#header_search_div {
+    padding: 1em 1.5em;
+    margin: -1em 0em;
+    margin-left: 3em;
+    display: none;
+}
+#search_term {
+    font-size: 0.9em;
+    font-family: 'PT Sans', 'Arial';
+    background-color: #333;
+    color: #eee;
+    border: none;
+    border-bottom: 0.1em solid #444;
+    padding: 0.3em 0.4em;
+    margin-top: -0.2em;
+    width: 20em;
+}
+#search_btn {
+    font-size: 0.9em;
+    font-family: 'PT Sans', 'Arial';
+    background-color: #333;
+    border: none;
+    border-bottom: 0.1em solid #444;
+    padding: 0.3em 1em;
+    margin-top: -0.2em;
+    margin-left: -0.5em;
+    cursor: pointer;
+}
+#search_btn img {
+    height: 0.9em;
+    margin-top: 0.1em;
+    margin-bottom: -0.1em;
+    opacity: 0.7;
 }
 /*//////////////////////////////*/
 #genres {
@@ -465,7 +511,7 @@ a:hover {
     margin-bottom: 1em;
 }
 .single_review_div h2 {
-    margin-bottom: 0em;
+    margin-bottom: 0.2em;
     margin-left: 0.5em;
 }
 .single_review_div em {
@@ -490,9 +536,10 @@ a:hover {
 }
 .single_review_div em {
     color: #999;
+    font-size: 0.9em;
 }
 .single_review_div em:hover {
-    color: #9b26af;;
+    color: #9b26af;
 }
 /**/
 .single_review_buttons {
@@ -503,13 +550,13 @@ a:hover {
     display: inline-block;
     margin: 0;
     width: 50%;
-    margin-top: 1.5em;
+    margin-top: 1em;
 }
 .sp_edit_review_form {
     margin-left: 0;
 }
 .sp_delete_review_form {
-    margin-right: -100%;
+    margin-right: -5%;
 }
 .sp_edit_btn, 
 .sp_delete_btn {
@@ -530,3 +577,95 @@ a:hover {
 .sp_delete_btn:hover {
     background-color: #7f0000;
 }
+/*/////*/
+#sp_inv_hr {
+    border: 0;
+}
+.genre_seperetaor {
+    margin: auto 0.2em;
+}
+/*multiple genres*/
+#remove_genre {
+    display: none;
+}
+#edit_remove_genre,
+#edit_add_genre {
+    display: none;
+}
+#remove_genre,
+#add_genre,
+#edit_remove_genre,
+#edit_add_genre {
+    background-color: #222;
+    border: none;
+    font-size: 1.4em;
+    padding: 0;
+    cursor: pointer;
+    margin-top: -1em;
+    color: #777;
+    vertical-align: bottom;
+    margin-bottom: 0.9em;
+}
+#remove_genre,
+#edit_remove_genre {
+    padding: 0em 0.3em;
+    margin-left: 0.2em;
+}
+#add_genre,
+#edit_add_genre {
+    padding: 0em 0.2em;
+}
+#remove_genre:hover,
+#edit_remove_genre:hover,
+#add_genre:hover,
+#edit_add_genre:hover {
+    color: #9b26af;
+}
+/*welcome*/
+#welcome_div {
+    color: #ddd;
+    text-align: left;
+    width: 70%;
+    background-color: #222;
+    margin: 0 auto;
+    padding: 1em 3em;
+    border-radius: 1px;
+    -webkit-box-shadow: 0px 4px 7px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 7px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 7px -3px rgba(0,0,0,0.75);
+}
+#welcome_div a {
+    text-decoration: underline;
+}
+#welcome_div h2 {
+    margin-top: 0;
+    margin-left: 2em;
+    padding-top: 0.5em;
+}
+#welcome_unauth,
+#welcome_auth {
+    display: inline-block;
+    vertical-align: top;
+}
+#welcome_unauth {
+    width: 40%;
+    padding-left: 1em;
+}
+#welcome_auth {
+    width: 50%;
+    padding-right: 1em;
+}
+.b_t {
+    margin-left: 0.5em;
+}
+.left_m {
+    margin-left: 1em;
+}
+.welcome_hr {
+    background-color: #444;
+    border: 1px solid #691a99;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
+/*/////*/

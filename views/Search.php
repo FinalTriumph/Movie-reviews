@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title><?php echo $genre; ?> | Movie Reviews</title>
+  <title>Search '<?php echo $search; ?>' | Movie Reviews</title>
   <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet"> 
   <link rel="stylesheet" type="text/css" href="public/css/style.css">
 </head>
@@ -20,7 +20,7 @@
   
   ?>
   <div id="genres" class="pull-left">
-    <div class="genres_options genres_options_active">
+    <div class="genres_options">
       <a href="genre?genre=Action"><button>Action</button></a>
       <a href="genre?genre=Adventure"><button>Adventure</button></a>
       <a href="genre?genre=Animation"><button>Animation</button></a>
@@ -49,8 +49,8 @@
   
   <?php
   
-  echo '<h2 id="genre_name">'.$genre.'</h2>
-        <hr id="genre_hr">';
+  echo "<h2 id='genre_name'>Search results for '".$search."'</h2>
+        <hr id='genre_hr'>";
   
   if (count($reviews)) {
       foreach ($reviews as $review) {
@@ -126,7 +126,7 @@
             </div>';
       }
   } else {
-      echo '<h3 id="genre_no_reviews">No reviews found in this genre.</h3>';
+      echo '<h3 id="genre_no_reviews">Nothing found.</h3>';
   }
   ?>
   
@@ -134,6 +134,8 @@
 <script type="text/javascript">
   /* global $ */
   $('#header_search_div').show();
+  
+  $("input[name=search]").val("<?php echo $search; ?>");
 </script>
 
 </body>

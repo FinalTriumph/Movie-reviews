@@ -49,8 +49,21 @@ if (!isset($_SESSION['token'])) {
     echo '
     <div class="single_review_div">
         <img src="'.$poster_link.'" class="pull-right single_post_poster" />
-        <a href="#"><h2>'.$review['title'].' ('.$review['year'].')</h2></a>
-        <a href="genre?genre='.$review['genre'].'"><p1><em>'.$review['genre'].'</em></p1></a><br />
+        <a href="search?search='.$review['title'].'"><h2>'.$review['title'].' ('.$review['year'].')</h2></a>';
+        
+        if (count(explode(", ", $review['genre'])) > 1) {
+                  $genres = explode(", ", $review['genre']);
+                  foreach($genres as $genre) {
+                    echo '<a href="genre?genre='.$genre.'"><p1><em>'.$genre.'</em></p1></a>';
+                    if ($genre !== end($genres)) {
+                      echo '<p1><em class="genre_seperetaor">|</em></p1>';
+                    }
+                  }
+                } else {
+                  echo '<a href="genre?genre='.$review['genre'].'"><p1><em>'.$review['genre'].'</em></p1></a>';
+                }
+        
+        echo '<br />
         <div class="single_review_text">
             <p1>'.$review['review'].'</p1>
         </div>
@@ -63,6 +76,7 @@ if (!isset($_SESSION['token'])) {
         ';
     if (Login::isLoggedin() && Login::isLoggedin() === $review['user_id']) {
         echo '
+            <hr id="sp_inv_hr"/>
             <div class="single_review_buttons">
               <div class="sp_edit_review_form">
                 <a href="edit-review?id='.$review['id'].'"><button class="sp_edit_btn">Edit</button></a>
