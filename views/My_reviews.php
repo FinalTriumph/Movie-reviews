@@ -24,7 +24,17 @@ if (!isset($_SESSION['token'])) {
 </style>
 
 <body>
+<div id="content">
   <?php include('./views/Header.php'); 
+  ?>
+  <div id="confirm_popup">
+    <div id="confirm_delete">
+      <p1>Are you sure you want to delete this review?</p1><br />
+      <button id="yes_delete_btn">Yes</button>
+      <button id="cancel_delete_btn">Cancel</button>
+    </div>
+  </div>
+  <?php
   $reviews = Review::myReviews();
   
   if (count($reviews)) {
@@ -41,7 +51,7 @@ if (!isset($_SESSION['token'])) {
   $user = Login::userinfo($user_id);
   foreach ($reviews as $review) {
     $reviewText = $review['review'];
-    $wordCount = 50;
+    $wordCount = 45;
     if (count(explode(" ", $reviewText)) > $wordCount) {
       $exploded = explode(" ", $reviewText);
       $reviewText = "";
@@ -51,9 +61,9 @@ if (!isset($_SESSION['token'])) {
       $reviewText .= "...";
     }
     
-    $charCount = 350;
+    $charCount = 320;
     if (strlen($review['title']) > 15) {
-      $charCount = 300;
+      $charCount = 270;
     }
     
     if (strlen($reviewText) > $charCount) {
@@ -108,18 +118,19 @@ if (!isset($_SESSION['token'])) {
               <div class="edit_review_form">
                 <a href="edit-review?id='.$review['id'].'"><button class="edit_btn">Edit</button></a>
               </div>
-              <form action="delete-review" method="POST" class="delete_review_form">
+              <form action="delete-review" method="POST" class="delete_review_form" id="delete'.$review['id'].'">
                 <input type="hidden" name="reviewid" value="'.$review['id'].'" />
                 <input type="hidden" name="nocsrf" value="'.$_SESSION['token'].'" />
-                <input type="submit" onclick="return confirm(\'Are you sure you want to delete this review?\')" value="Delete" class="delete_btn" />
+                <input type="button" value="Delete" class="delete_btn" data-id="'.$review['id'].'" />
               </form>
             </div>
           </div>
         </div>';
   }
   ?>
-
+</div>
 <?php include('./views/Footer.php'); ?>
+
 
 </body>
 </html>

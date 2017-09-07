@@ -14,6 +14,7 @@
 </style>
 
 <body>
+<div id="content">
   <?php include('./views/Header.php'); ?>
   <div id="welcome_div">
     <h2>Movie Reviews</h2>
@@ -42,7 +43,7 @@
     <p class="left_m">If any errors spotted, feel free to <a href="http://finaltriumph.tk/" target="_blank">contact me</a> and let me know.</p>
     <p class="left_m">Made by <a href="http://finaltriumph.tk/" target="_blank">FinalTriumph</a>, 2017</p>
   </div>
-  
+</div>
 <?php include('./views/Footer.php'); ?>
 
 </body>

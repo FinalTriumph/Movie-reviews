@@ -1,11 +1,21 @@
 body {
     background-color: #444;
+    background-image: url(https://i.imgur.com/HAmZKJS.png);
+    background-size: 100% 100%;
+    background-attachment: fixed;
     text-align: center;
     margin: 0;
     min-width: 1100px;
-    margin-bottom: 100px;
     font-family: 'PT Sans', 'Arial';
     text-shadow: 1px 1px 1px rgba(0,0,0,0.75);
+    min-height: 100vh;
+    position: relative;
+}
+#content {
+    padding-bottom: 10em;
+}
+.content_with_genres {
+    min-height: 50em;
 }
 a {
     text-decoration: none;
@@ -181,6 +191,7 @@ em {
     color: #ddd;
     background-color: #222;
     height: 46.5em;
+    padding: 0;
     cursor: pointer;
     text-align: center;
     border-bottom: 1px solid #222;
@@ -188,10 +199,9 @@ em {
 }
 .genres_toggle p1 {
     display: block;
-    font-size: 1.1em;
-    -ms-transform: translateY(20em) rotate(-90deg); /* IE 9 */
-    -webkit-transform: translateY(20em) rotate(-90deg); /* Chrome, Safari, Opera */
-    transform: translateY(20em) rotate(-90deg);
+    -ms-transform: translateY(21em) rotate(-90deg); /* IE 9 */
+    -webkit-transform: translateY(21em) rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: translateY(21em) rotate(-90deg);
 }
 .genres_toggle:hover {
     background-color: #691a99;
@@ -201,12 +211,12 @@ em {
     color: #ddd;
     margin-bottom: 0.3em;
     text-align: left;
-    margin-left: 12em;
+    margin-left: 15em;
 }
 #genre_hr {
     background-color: #444;
     border: 1px solid #691a99;
-    margin: 0 2em 1em 2em;
+    margin: 0.5em 2em 0em 2em;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
@@ -227,7 +237,7 @@ em {
 #user_profile_hr {
     background-color: #444;
     border: 1px solid #691a99;
-    margin: 1em 2em 1em 2em;
+    margin: 1em 2em 0em 2em;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
@@ -258,7 +268,7 @@ em {
     display: inline-block;
     vertical-align: top;
     height: 27.2em;
-    margin: 1em 0.5em 0em 0.5em;
+    margin: 1.5em 1em 0em 1em;
     background-color: #222;
     color: #eee;
     text-align: justify;
@@ -268,7 +278,7 @@ em {
     box-shadow: 0px 5px 7px -3px rgba(0,0,0,0.75);
 }
 .my_review_div {
-    height: 28em;
+    height: 29em;
 }
 .review_div h3 {
     margin: 0;
@@ -284,7 +294,7 @@ em {
 }
 .review_default_image {
     text-align: center;
-    background-image: url(https://i.imgur.com/rfUi6ZR.jpg);
+    background-image: url(https://i.imgur.com/8QjQ7zW.jpg);
     background-size: 100% 100%;
 }
 .review_default_image h2 {
@@ -300,6 +310,9 @@ em {
     padding: 1.5em;
     overflow: hidden;
     border-bottom: 1px solid #691a99;
+}
+.review_text h3 {
+    text-align: left;
 }
 .review_text em {
     color: #999;
@@ -346,8 +359,8 @@ em {
 }
 .add_new_review_btn {
     width: 50%;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
     font-family: 'PT Sans', 'Arial';
     font-size: 0.9em;
     padding: 0.6em;
@@ -377,7 +390,7 @@ em {
     display: inline-block;
     margin: 0;
     width: 53%;
-    margin-top: 0.4em;
+    margin-top: 1em;
 }
 .edit_review_form {
     margin-left: -4%;
@@ -398,7 +411,11 @@ em {
     font-family: 'PT Sans', 'Arial';
     cursor: pointer;
 }
+.edit_btn {
+    border-bottom: 1px solid #691a99;
+}
 .delete_btn {
+    border-bottom: 1px solid #7f0000;
     width: 101%;
 }
 .edit_btn:hover {
@@ -496,6 +513,7 @@ em {
     background-color: #222;
     color: #ddd;
     width: 60%;
+    display: inline-block;
     min-height: 24em;
     margin: auto;
     text-align: left;
@@ -519,7 +537,6 @@ em {
 }
 .single_review_text {
     margin-top: 1em;
-    text-indent: 1em;
     text-align: justify;
 }
 .single_post_hr {
@@ -570,6 +587,12 @@ em {
     margin-bottom: 0em;
     font-family: 'PT Sans', 'Arial';
     cursor: pointer;
+}
+.sp_edit_btn {
+    border-bottom: 1px solid #691a99;
+}
+.sp_delete_btn {
+    border-bottom: 1px solid #7f0000;
 }
 .sp_edit_btn:hover {
     background-color: #691a99;
@@ -669,3 +692,94 @@ em {
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
 }
 /*/////*/
+#confirm_popup {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: none;
+}
+#confirm_delete {
+    background-color: #222;
+    width: 30em;
+    margin: auto;
+    color: #ddd;
+    padding: 3em;
+    padding-top: 2.5em;
+    border: 1px solid #272727;
+    -webkit-box-shadow: 0px 4px 7px -2px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 4px 7px -2px rgba(0,0,0,1);
+    box-shadow: 0px 4px 7px -2px rgba(0,0,0,1);
+}
+#yes_delete_btn, 
+#cancel_delete_btn {
+    border: 0px;
+    border-radius: 0;
+    background-color: #444;
+    color: #eee;
+    width: 30%;
+    padding: 0.4em 0em;
+    margin-top: 2em;
+    font-family: 'PT Sans', 'Arial';
+    cursor: pointer;
+}
+#yes_delete_btn {
+    border-bottom: 1px solid #7f0000;
+}
+#cancel_delete_btn {
+    border-bottom: 1px solid #691a99;
+}
+#cancel_delete_btn:hover {
+    background-color: #691a99;
+}
+#yes_delete_btn:hover {
+    background-color: #7f0000;
+}
+/*footer*/
+#footer {
+    background-color: #222;
+    color: #ddd;
+    text-align: left;
+    padding: 1.5em 5%;
+    width: 90%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-top: 0.2em solid #691a99;
+    -webkit-box-shadow: 0px -4px 7px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -4px 7px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px -4px 7px -3px rgba(0,0,0,0.75);
+}
+#footer a {
+    text-decoration: underline;
+}
+#footer_arrow_img {
+    height: 2em;
+    margin-right: 5em;
+    float: right;
+    cursor: pointer;
+    opacity: 0.5;
+}
+#footer_arrow_img:hover {
+    opacity: 0.7;
+}
+.ft_sep {
+    margin: auto 0.3em;
+    color: #777;
+}
+#footer_hr {
+    margin: 1em 0;
+    margin-left: -1em;
+    width: 30em;
+    background-color: #444;
+    border: 1px solid #691a99;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}

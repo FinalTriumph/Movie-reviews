@@ -24,6 +24,7 @@ if (!isset($_SESSION['token'])) {
 </style>
 
 <body>
+<div id="content">
     <?php 
     
     include('./views/Header.php'); 
@@ -47,7 +48,7 @@ if (!isset($_SESSION['token'])) {
                             $gc = 3;
                         }
                         echo '<select name="genre'.$gc.'" required>';
-                        $genres = array('Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western'); 
+                        $genres = array('Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western'); 
                         for ($i = 0; $i < count($genres); $i++) {
                             if ($genres[$i] == $genre) {
                                 echo '<option selected value="'.$genre.'">'.$genre.'</option>';
@@ -61,7 +62,7 @@ if (!isset($_SESSION['token'])) {
                     }
                 } else {
                     echo '<select name="genre" required>';
-                    $genres = array('Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western'); 
+                    $genres = array('Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western'); 
                     for ($i = 0; $i < count($genres); $i++) {
                         if ($genres[$i] == $review['genre']) {
                             echo '<option selected value="'.$review['genre'].'">'.$review['genre'].'</option>';
@@ -103,7 +104,7 @@ if (!isset($_SESSION['token'])) {
         </form>
     ';
     ?>
-    
+</div>    
 <?php include('./views/Footer.php'); ?>
     
 </body>

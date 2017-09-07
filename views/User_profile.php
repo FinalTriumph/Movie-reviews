@@ -14,6 +14,7 @@
 </style>
 
 <body>
+<div id="content">
   <?php 
   
   include('./views/Header.php');
@@ -44,7 +45,7 @@
       foreach ($reviews as $review) {
         $user = Login::userinfo($review['user_id']);
         $reviewText = $review['review'];
-        $wordCount = 50;
+        $wordCount = 45;
         if (count(explode(" ", $reviewText)) > $wordCount) {
           $exploded = explode(" ", $reviewText);
           $reviewText = "";
@@ -54,9 +55,9 @@
           $reviewText .= "...";
         }
         
-        $charCount = 350;
+        $charCount = 320;
         if (strlen($review['title']) > 15) {
-          $charCount = 300;
+          $charCount = 270;
         }
         
         if (strlen($reviewText) > $charCount) {
@@ -117,7 +118,7 @@
       echo "<h3 id='user_no_reviews'>This user haven't added any reviews.</h3>";
   }
   ?>
-  
+</div>
 <?php include('./views/Footer.php'); ?>
 
 </body>

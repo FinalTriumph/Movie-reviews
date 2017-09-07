@@ -24,6 +24,7 @@ if (!isset($_SESSION['token'])) {
 </style>
 
 <body>
+<div id="content">
   <?php include('./views/Header.php'); ?>
   <form action="store-review" method="post" id="new_review_form">
     <h2>New Movie Review</h2>
@@ -45,7 +46,7 @@ if (!isset($_SESSION['token'])) {
         <option value="Fantasy">Fantasy</option>
         <option value="History">History</option>
         <option value="Horror">Horror</option>
-        <option value="Musical">Musical</option>
+        <option value="Music">Music</option>
         <option value="Mystery">Mystery</option>
         <option value="Romance">Romance</option>
         <option value="Sci-Fi">Sci-Fi</option>
@@ -82,7 +83,7 @@ if (!isset($_SESSION['token'])) {
     <input type="hidden" name="nocsrf" value="<?php echo $_SESSION['token']; ?>">
     <input type="submit" value="Add Review" class="submit_review_btn">
   </form>
-  
+</div>
 <?php include('./views/Footer.php'); ?>  
   
 </body>

@@ -79,8 +79,10 @@ class Review extends Controller {
             curl_close($ca);
             $config = json_decode($response, true);
             
+            $readyTitle = preg_replace('/\s+/', '+', $_POST['title']);
+            
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, "http://api.themoviedb.org/3/search/movie?query=".$_POST['title']."&year=".$_POST['year']."&api_key=".getenv('HTTP_TMDB_API_KEY'));
+            curl_setopt($ch, CURLOPT_URL, "http://api.themoviedb.org/3/search/movie?query=".$readyTitle."&year=".$_POST['year']."&api_key=".getenv('HTTP_TMDB_API_KEY'));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
             curl_setopt($ch, CURLOPT_HEADER, FALSE);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/json"));
@@ -164,8 +166,10 @@ class Review extends Controller {
                     curl_close($ca);
                     $config = json_decode($response, true);
                     
+                    $readyTitle = preg_replace('/\s+/', '+', $_POST['title']);
+                    
                     $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, "http://api.themoviedb.org/3/search/movie?query=".$_POST['title']."&year=".$_POST['year']."&api_key=".getenv('HTTP_TMDB_API_KEY'));
+                    curl_setopt($ch, CURLOPT_URL, "http://api.themoviedb.org/3/search/movie?query=".$readyTitle."&year=".$_POST['year']."&api_key=".getenv('HTTP_TMDB_API_KEY'));
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
                     curl_setopt($ch, CURLOPT_HEADER, FALSE);
                     curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/json"));

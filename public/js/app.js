@@ -1,9 +1,11 @@
 /* global $ */
 
 $('.review_div').hover(function() {
-    $('.review_text_hidden', this).slideDown(500);
+    //$('.review_text_hidden', this).slideDown(300);
+    $('.review_text_hidden', this).fadeIn(300);
   }, function() {
-    $('.review_text_hidden', this).slideUp(300);
+    //$('.review_text_hidden', this).slideUp(200);
+    $('.review_text_hidden', this).fadeOut(200);
   });
   
 $('form').submit(function() {
@@ -72,6 +74,28 @@ $("input[name='search']").blur(function() {
     });
 });
 
+$('.delete_btn, .sp_delete_btn').click(function() {
+    var id = $(this).attr('data-id');
+    $("#confirm_popup").show();
+    $("#yes_delete_btn").click(function() {
+        $("#delete"+id).submit();
+    });
+    $("#cancel_delete_btn").click(function() {
+        $("#confirm_popup").hide();
+        $("#yes_delete_btn").unbind();
+    });
+    $("#confirm_popup").click(function() {
+        $("#confirm_popup").hide();
+        $("#yes_delete_btn").unbind();
+    });
+});
+
+$("#footer_arrow_img").click(function() {
+    $('html, body').animate({
+        scrollTop: $('body').offset().top
+    }, 500);
+});
+
 var genreCount = 1;
 
 $("#add_genre").click(function(e) {
@@ -79,7 +103,7 @@ $("#add_genre").click(function(e) {
     $("#remove_genre").show();
     if (genreCount < 3) {
         genreCount += 1;
-        $('<select name="genre'+genreCount+'" required><option disabled selected value>Select genre ...</option><option value="Action">Action</option><option value="Adventure">Adventure</option><option value="Animation">Animation</option><option value="Biography">Biography</option><option value="Comedy">Comedy</option><option value="Crime">Crime</option><option value="Documentary">Documentary</option><option value="Drama">Drama</option><option value="Family">Family</option><option value="Fantasy">Fantasy</option><option value="History">History</option><option value="Horror">Horror</option><option value="Musical">Musical</option><option value="Mystery">Mystery</option><option value="Romance">Romance</option><option value="Sci-Fi">Sci-Fi</option><option value="Sport">Sport</option><option value="Thriller">Thriller</option><option value="War">War</option><option value="Western">Western</option></select>').insertBefore('#remove_genre');
+        $('<select name="genre'+genreCount+'" required><option disabled selected value>Select genre ...</option><option value="Action">Action</option><option value="Adventure">Adventure</option><option value="Animation">Animation</option><option value="Biography">Biography</option><option value="Comedy">Comedy</option><option value="Crime">Crime</option><option value="Documentary">Documentary</option><option value="Drama">Drama</option><option value="Family">Family</option><option value="Fantasy">Fantasy</option><option value="History">History</option><option value="Horror">Horror</option><option value="Music">Music</option><option value="Mystery">Mystery</option><option value="Romance">Romance</option><option value="Sci-Fi">Sci-Fi</option><option value="Sport">Sport</option><option value="Thriller">Thriller</option><option value="War">War</option><option value="Western">Western</option></select>').insertBefore('#remove_genre');
     }
     if (genreCount === 3) {
         $("#add_genre").hide();
@@ -102,6 +126,7 @@ $("#remove_genre").click(function(e) {
 var editGenreCount = 0;
 
 $(document).ready(function() {
+    
     $("#profile_options_dropdown").css("top", $("#header").outerHeight());
     
     var hrWidth = $(".single_post_hr").outerWidth();
@@ -141,7 +166,7 @@ $(document).ready(function() {
         $("#edit_remove_genre").show();
         if (editGenreCount < 3) {
             editGenreCount += 1;
-            $('<select name="genre'+editGenreCount+'" required><option disabled selected value>Select genre ...</option><option value="Action">Action</option><option value="Adventure">Adventure</option><option value="Animation">Animation</option><option value="Biography">Biography</option><option value="Comedy">Comedy</option><option value="Crime">Crime</option><option value="Documentary">Documentary</option><option value="Drama">Drama</option><option value="Family">Family</option><option value="Fantasy">Fantasy</option><option value="History">History</option><option value="Horror">Horror</option><option value="Musical">Musical</option><option value="Mystery">Mystery</option><option value="Romance">Romance</option><option value="Sci-Fi">Sci-Fi</option><option value="Sport">Sport</option><option value="Thriller">Thriller</option><option value="War">War</option><option value="Western">Western</option></select>').insertBefore('#edit_remove_genre');
+            $('<select name="genre'+editGenreCount+'" required><option disabled selected value>Select genre ...</option><option value="Action">Action</option><option value="Adventure">Adventure</option><option value="Animation">Animation</option><option value="Biography">Biography</option><option value="Comedy">Comedy</option><option value="Crime">Crime</option><option value="Documentary">Documentary</option><option value="Drama">Drama</option><option value="Family">Family</option><option value="Fantasy">Fantasy</option><option value="History">History</option><option value="Horror">Horror</option><option value="Music">Music</option><option value="Mystery">Mystery</option><option value="Romance">Romance</option><option value="Sci-Fi">Sci-Fi</option><option value="Sport">Sport</option><option value="Thriller">Thriller</option><option value="War">War</option><option value="Western">Western</option></select>').insertBefore('#edit_remove_genre');
         }
         if (editGenreCount === 3) {
             $("#edit_add_genre").hide();

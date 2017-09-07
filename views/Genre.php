@@ -14,6 +14,7 @@
 </style>
 
 <body>
+<div id="content" class="content_with_genres" >
   <?php 
   
   include('./views/Header.php');
@@ -33,7 +34,7 @@
       <a href="genre?genre=Fantasy"><button>Fantasy</button></a>
       <a href="genre?genre=History"><button>History</button></a>
       <a href="genre?genre=Horror"><button>Horror</button></a>
-      <a href="genre?genre=Musical"><button>Musical</button></a>
+      <a href="genre?genre=Music"><button>Music</button></a>
       <a href="genre?genre=Mystery"><button>Mystery</button></a>
       <a href="genre?genre=Romance"><button>Romance</button></a>
       <a href="genre?genre=Sci-Fi"><button>Sci-Fi</button></a>
@@ -49,14 +50,14 @@
   
   <?php
   
-  echo '<h2 id="genre_name">'.$genre.'</h2>
+  echo '<h3 id="genre_name">'.$genre.'</h3>
         <hr id="genre_hr">';
   
   if (count($reviews)) {
       foreach ($reviews as $review) {
         $user = Login::userinfo($review['user_id']);
         $reviewText = $review['review'];
-        $wordCount = 50;
+        $wordCount = 45;
         if (count(explode(" ", $reviewText)) > $wordCount) {
           $exploded = explode(" ", $reviewText);
           $reviewText = "";
@@ -66,9 +67,9 @@
           $reviewText .= "...";
         }
         
-        $charCount = 350;
+        $charCount = 320;
         if (strlen($review['title']) > 15) {
-          $charCount = 300;
+          $charCount = 270;
         }
         
         if (strlen($reviewText) > $charCount) {
@@ -126,10 +127,10 @@
             </div>';
       }
   } else {
-      echo '<h3 id="genre_no_reviews">No reviews found in this genre.</h3>';
+      echo '<h4 id="genre_no_reviews">No reviews found in this genre.</h4>';
   }
   ?>
-  
+</div>
 <?php include('./views/Footer.php'); ?>
 <script type="text/javascript">
   /* global $ */

@@ -26,7 +26,7 @@
                 <img src='".$user_info['profileimg']."' id='header_user_img'/>
                 <p1>".$networkImage." ".$user_info['username']." 
                     <span id='header_arrow_span'>
-                        <img src='http://i.imgur.com/bFeYehs.png' class='header_arrow'>
+                        <img src='https://i.imgur.com/cQKYGIw.png' class='header_arrow'>
                     </span>
                 </p1>
             </div>
@@ -42,7 +42,7 @@
                 <img src="http://i.imgur.com/IBfrj3q.png" class="header_sign_in_icon"> | 
                 <img src="http://i.imgur.com/9nSmOm5.png" class="header_sign_in_icon"> 
                 <span id='header_arrow_span'>
-                    <img src='http://i.imgur.com/bFeYehs.png' class='header_arrow'>
+                    <img src='https://i.imgur.com/cQKYGIw.png' class='header_arrow'>
                 </span>
             </p1>
             <div id='profile_options_dropdown'>

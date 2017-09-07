@@ -13,7 +13,7 @@ class Logout extends Controller {
         setcookie('SNID', '1', time()-3600);
         setcookie('SNID_', '1', time()-3600);
         
-        header("location: /");
+        header("location: /reviews");
     }
     
 }
