@@ -12,6 +12,8 @@ function __autoload($class_name) {
     }
 }
 
+echo "this is index page";
+
 require_once('./routes/Routes.php');
 
 ?>
