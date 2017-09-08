@@ -34,7 +34,7 @@
         </div>
         <div id="welcome_auth">
             <p class="b_t">Authenticated users can:</p>
-            <p class="left_m">- Add new reviews (with movie title, year, genre(movie can have 1-3 genres), review text, stars(1-10).</p>
+            <p class="left_m">- Add new reviews (with movie title, year, genre (1-3 genres), review text, stars (1-10).</p>
             <p class="left_m">- View added reviews.</p>
             <p class="left_m">- Edit added reviews.</p>
             <p class="left_m">- Delete added reviews.</p>

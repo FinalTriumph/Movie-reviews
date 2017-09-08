@@ -11,7 +11,7 @@ All users can:
 - View user profiles (added reviews).
 
 Authenticated users can:
-- Add new reviews (with movie title, year, genre(movie can have 1-3 genres), review text, stars(1-10).
+- Add new reviews (with movie title, year, genre (1-3 genres), review text, stars (1-10).
 - View added reviews.
 - Edit added reviews.
 - Delete added reviews.
