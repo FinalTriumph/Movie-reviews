@@ -19,14 +19,7 @@ function __autoload($class_name) {
 
 echo "this is index page<br />";
 
-if (file_exists('./routes/Routes.php')) {
-    require_once './routes/Routes.php';
-    echo "routes required <br />";
-} else {
-    echo "routes not required <br />";
-}
-
-//require_once('./routes/Routes.php');
+require_once('./routes/Routes.php');
 
 echo "and this is again index page";
 
