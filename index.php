@@ -3,7 +3,7 @@
 session_start();
 
 //Worked on Cloud9, but didn't on Heroku
-function __autoload($class_name) {
+/*function __autoload($class_name) {
     echo "This is class - ".$class_name."<br />";
     if (file_exists('./classes/'.$class_name.'.php')) {
         echo "trying to require - ".$class_name."<br />";
@@ -20,7 +20,17 @@ function __autoload($class_name) {
     } else {
         echo "not exists - ".$class_name."<br />";
     }
-}
+}*/
+
+spl_autoload_register(function ($class_name) {
+    if (file_exists('./classes/'.$class_name.'.php')) {
+        include './classes/'.$class_name.'.php';
+    } else if (file_exists('./controllers/'.$class_name.'.php')) {
+        include './controllers/'.$class_name.'.php';
+    } else if (file_exists('./controllers/auth/'.$class_name.'.php')) {
+        include './controllers/auth/'.$class_name.'.php';
+    }
+});
 
 //spl_autoload_register('__autoload');
 
@@ -35,10 +45,10 @@ function __autoload($class_name) {
 }
 
 spl_autoload_register('my_autoloader');
-
-if(function_exists('__autoload')) {
+*/
+if (function_exists('__autoload')) {
     spl_autoload_register('__autoload');
-}*/
+}
 
 /*
 //classes
@@ -60,7 +70,7 @@ require_once('./controllers/auth/Facebook.php');
 require_once('./controllers/auth/Google.php');
 require_once('./controllers/auth/Twitter.php');
 */
-if (file_exists('./classes/Database.php')) {
+/*if (file_exists('./classes/Database.php')) {
     echo "trying to require Database <br />";
     require_once('./classes/Database.php');
     echo "required Database <br />";
@@ -82,7 +92,7 @@ if (file_exists('./controllers/auth/Facebook.php')) {
     echo "required Facebook <br />";
 } else {
     echo "Facebook not found <br />";
-}
+}*/
 
 require_once('./routes/Routes.php');
 
