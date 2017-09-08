@@ -4,6 +4,7 @@ session_start();
 
 //Worked on Cloud9, but didn't on Heroku
 function __autoload($class_name) {
+    echo "This is class - ".$class_name."<br />";
     if (file_exists('./classes/'.$class_name.'.php')) {
         echo "trying to require - ".$class_name."<br />";
         require_once('./classes/'.$class_name.'.php');
@@ -59,14 +60,30 @@ require_once('./controllers/auth/Facebook.php');
 require_once('./controllers/auth/Google.php');
 require_once('./controllers/auth/Twitter.php');
 */
-
-if (file_exists('./routes/Routes.php')) {
-    echo "trying to require Routes";
-    require_once('./routes/Routes.php');
-    echo "routes Required";
+if (file_exists('./classes/Database.php')) {
+    echo "trying to require Database <br />";
+    require_once('./classes/Database.php');
+    echo "required Database <br />";
 } else {
-    echo "routes file not found";
+    echo "Database not found <br />";
 }
-//require_once('./routes/Routes.php');
+
+if (file_exists('./controllers/Controller.php')) {
+    echo "trying to require Controller";
+    require_once('./controllers/Controller.php');
+    echo "required Controller <br />";
+} else {
+    echo "Controller not found <br />";
+}
+
+if (file_exists('./controllers/auth/Facebook.php')) {
+    echo "trying to require Facebook <br />";
+    require_once('./controllers/auth/Facebook.php');
+    echo "required Facebook <br />";
+} else {
+    echo "Facebook not found <br />";
+}
+
+require_once('./routes/Routes.php');
 
 ?>
