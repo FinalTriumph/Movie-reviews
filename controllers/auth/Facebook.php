@@ -11,22 +11,21 @@ class Facebook extends Controller {
         $fb_callback = getenv('HTTP_FB_CALLBACK');
         
         $fb = new Facebook\Facebook([
-          'app_id' => $app_id,
-          'app_secret' => $app_secret,
-          'default_graph_version' => 'v2.2',
-          ]);
+                'app_id' => $app_id,
+                'app_secret' => $app_secret,
+                'default_graph_version' => 'v2.2',
+            ]);
         
         $helper = $fb->getRedirectLoginHelper();
         
         //$permissions = ['email']; // Optional permissions
         $loginUrl = $helper->getLoginUrl($fb_callback);
         
-        //echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
-        
         header("location: ".($loginUrl));
     }
     
     public static function getCredentials() {
+        
         require 'vendor/autoload.php';
         
         $app_id = getenv('HTTP_APP_ID');
@@ -34,41 +33,41 @@ class Facebook extends Controller {
         $fb_callback = getenv('HTTP_FB_CALLBACK');
         
         $fb = new Facebook\Facebook([
-          'app_id' => $app_id,
-          'app_secret' => $app_secret,
-          'default_graph_version' => 'v2.2',
-          ]);
+                'app_id' => $app_id,
+                'app_secret' => $app_secret,
+                'default_graph_version' => 'v2.2',
+            ]);
         
         $helper = $fb->getRedirectLoginHelper();
         
         try {
-          $accessToken = $helper->getAccessToken();
+            $accessToken = $helper->getAccessToken();
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
-          // When Graph returns an error
-          echo 'Graph returned an error: ' . $e->getMessage();
-          exit;
+            // When Graph returns an error
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
         } catch(Facebook\Exceptions\FacebookSDKException $e) {
-          // When validation fails or other local issues
-          echo 'Facebook SDK returned an error: ' . $e->getMessage();
-          exit;
+            // When validation fails or other local issues
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
         }
         
-        if (! isset($accessToken)) {
-          if ($helper->getError()) {
-            if ($helper->getErrorCode() == 200) {
-                header("location: /");
+        if (!isset($accessToken)) {
+            if ($helper->getError()) {
+                if ($helper->getErrorCode() == 200) {
+                    header("location: /");
+                } else {
+                    header('HTTP/1.0 401 Unauthorized');
+                    echo "Error: " . $helper->getError() . "\n";
+                    echo "Error Code: " . $helper->getErrorCode() . "\n";
+                    echo "Error Reason: " . $helper->getErrorReason() . "\n";
+                    echo "Error Description: " . $helper->getErrorDescription() . "\n";
+                }
             } else {
-                header('HTTP/1.0 401 Unauthorized');
-                echo "Error: " . $helper->getError() . "\n";
-                echo "Error Code: " . $helper->getErrorCode() . "\n";
-                echo "Error Reason: " . $helper->getErrorReason() . "\n";
-                echo "Error Description: " . $helper->getErrorDescription() . "\n";
+                header('HTTP/1.0 400 Bad Request');
+                echo 'Bad request';
             }
-          } else {
-            header('HTTP/1.0 400 Bad Request');
-            echo 'Bad request';
-          }
-          exit;
+            exit;
         }
         
         // Logged in
@@ -86,26 +85,26 @@ class Facebook extends Controller {
         //$tokenMetadata->validateUserId('123');
         $tokenMetadata->validateExpiration();
         
-        if (! $accessToken->isLongLived()) {
-          // Exchanges a short-lived access token for a long-lived one
-          try {
-            $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
-          } catch (Facebook\Exceptions\FacebookSDKException $e) {
-            echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
-            exit;
-          }
+        if (!$accessToken->isLongLived()) {
+            // Exchanges a short-lived access token for a long-lived one
+            try {
+                $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+            } catch (Facebook\Exceptions\FacebookSDKException $e) {
+                echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
+                exit;
+            }
         }
         
         
         try {
-          // Returns a `Facebook\FacebookResponse` object
-          $response = $fb->get('/me?fields=id,name,picture', $accessToken);
+            // Returns a `Facebook\FacebookResponse` object
+            $response = $fb->get('/me?fields=id,name,picture', $accessToken);
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
-          echo 'Graph returned an error: ' . $e->getMessage();
-          exit;
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
         } catch(Facebook\Exceptions\FacebookSDKException $e) {
-          echo 'Facebook SDK returned an error: ' . $e->getMessage();
-          exit;
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
         }
         
         $user = $response->getGraphUser();

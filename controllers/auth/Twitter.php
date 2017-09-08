@@ -26,6 +26,7 @@ class Twitter extends Controller {
     }
     
     public static function getCredentials() {
+        
         require 'vendor/autoload.php';
         
         $consumer_key = getenv('HTTP_CONSUMER_KEY');

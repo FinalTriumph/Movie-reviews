@@ -1,5 +1,5 @@
 <div id="header">
-    <a href="/" class="pull-left">Movie Reviews</a>
+    <a href="/" class="pull-left" id="header_mr_a"><img src="https://i.imgur.com/KFGajXy.png" id="header_mr_img"/></a>
     <div id="header_search_div" class="pull-left">
         <input type="text" name="search" id="search_term" placeholder="Search by title ..." />
         <button id="search_btn"><img src="https://i.imgur.com/VVVVBvq.png" /></button>

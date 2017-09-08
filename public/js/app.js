@@ -1,12 +1,17 @@
 /* global $ */
 
+$('#header_mr_a').hover(function() {
+    $('#header_mr_img').attr('src', 'https://i.imgur.com/ZSo0jY4.png');
+}, function() {
+    $('#header_mr_img').attr('src', 'https://i.imgur.com/KFGajXy.png');
+});
+
 $('.review_div').hover(function() {
-    //$('.review_text_hidden', this).slideDown(300);
     $('.review_text_hidden', this).fadeIn(300);
-  }, function() {
-    //$('.review_text_hidden', this).slideUp(200);
+}, function() {
     $('.review_text_hidden', this).fadeOut(200);
-  });
+    
+});
   
 $('form').submit(function() {
    $('input[type=submit]').attr("disabled", "disabled");
@@ -23,14 +28,14 @@ $('#profile_options').click(function() {
 });
 
 $('#profile_options, #profile_options_dropdown').hover(function() {
-        $("#profile_options_dropdown").show();
-        $("#profile_options").css('border-color', '#9b26af');
-        $("#profile_options").css('color', '#9b26af');
-    }, function() {
-        $("#profile_options_dropdown").hide();
-        $("#profile_options").css('border-color', '#691a99');
-        $("#profile_options").css('color', '#ddd');
-    });
+    $("#profile_options_dropdown").show();
+    $("#profile_options").css('border-color', '#9b26af');
+    $("#profile_options").css('color', '#9b26af');
+}, function() {
+    $("#profile_options_dropdown").hide();
+    $("#profile_options").css('border-color', '#691a99');
+    $("#profile_options").css('color', '#ddd');
+});
     
 $('.genres_toggle').click(function() {
     if ($(".genres_options").is(':visible')) {
@@ -41,10 +46,10 @@ $('.genres_toggle').click(function() {
 });
 
 $('#search_term, #search_btn').hover(function() {
-        $('#search_term, #search_btn').css('border-color', '#9b26af');
-    }, function() {
-        $('#search_term, #search_btn').css('border-color', '#444');
-    });
+    $('#search_term, #search_btn').css('border-color', '#9b26af');
+}, function() {
+    $('#search_term, #search_btn').css('border-color', '#444');
+});
     
 $('#search_btn').click(function() {
     window.location = window.location.origin + "/search?search=" + $('#search_term').val();
@@ -141,7 +146,7 @@ $(document).ready(function() {
             } else {
                 editGenreCount = 2;
             }
-        } else{
+        } else {
             editGenreCount = 1;
         }
     }

@@ -128,7 +128,7 @@ class Review extends Controller {
             $user_id = Login::isLoggedIn();
             if ($review['user_id'] !== $user_id) {
                 die('Unauthorized Page');
-                }
+            }
             
             require_once("./views/Edit-review.php");
         } else {

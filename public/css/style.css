@@ -5,7 +5,7 @@ body {
     background-attachment: fixed;
     text-align: center;
     margin: 0;
-    min-width: 1100px;
+    min-width: 1200px;
     font-family: 'PT Sans', 'Arial';
     text-shadow: 1px 1px 1px rgba(0,0,0,0.75);
     min-height: 100vh;
@@ -44,6 +44,7 @@ em {
 #header {
     background-color: #222;
     padding: 1em;
+    padding-left: 3em;
     padding-bottom: 0.8em;
     text-align: right;
     border-bottom: 0.2em solid #691a99;
@@ -65,6 +66,11 @@ em {
 #header_user_img {
     height: 2em;
     margin: -1.4em 0.5em -0.6em 0em;
+}
+#header_mr_img {
+    height: 2em;
+    margin-top: -0.4em;
+    margin-bottom: -0.6em;
 }
 .header_arrow {
     height: 0.5em;
@@ -147,7 +153,7 @@ em {
     margin-bottom: -0.1em;
     opacity: 0.7;
 }
-/*//////////////////////////////*/
+/*/////////////*/
 #genres {
     background-color: #222;
     margin-top: 0.5em;
@@ -527,6 +533,9 @@ em {
     height: 23.5em;
     margin-left: 2em;
     margin-bottom: 1em;
+    -webkit-box-shadow: 0px 5px 12px -3px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 5px 12px -3px rgba(0,0,0,0.5);
+    box-shadow: 0px 5px 12px -3px rgba(0,0,0,0.5);
 }
 .single_review_div h2 {
     margin-bottom: 0.2em;
@@ -664,6 +673,10 @@ em {
     margin-top: 0;
     margin-left: 2em;
     padding-top: 0.5em;
+}
+#welcome_mr_img {
+    height: 1.5em;
+    margin: -1.1em 0.7em -0.4em 0em;
 }
 #welcome_unauth,
 #welcome_auth {

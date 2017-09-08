@@ -1,9 +1,9 @@
 <?php
 
 if (!isset($_SESSION['token'])) {
-  $cstrong = true;
-  $token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
-  $_SESSION['token'] = $token;
+    $cstrong = true;
+    $token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+    $_SESSION['token'] = $token;
 }
 
 ?>
@@ -13,13 +13,14 @@ if (!isset($_SESSION['token'])) {
 <head>
     <meta charset="UTF-8">
     <title>Edit Review | Movie Reviews</title>
+    <link rel="icon" href="https://i.imgur.com/KFGajXy.png" />
     <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
 </head>
 
 <style>
     <?php
-    include('./public/css/style.css');
+        include('./public/css/style.css');
     ?>
 </style>
 
@@ -36,7 +37,7 @@ if (!isset($_SESSION['token'])) {
             <h2>Edit Review</h2>
             <div class="title_inline">
                 <p1>Title:</p1><br />
-                <input type="text" name="title" placeholder="Title ..." value ="'.$review['title'].'" required /><br />
+                <input type="text" name="title" placeholder="Title ..." value ="'.$review['title'].'" maxlength="70" required /><br />
                 <p1>Genre:</p1><br />';
                 if (count(explode(', ', $review['genre'])) > 1) {
                     $review_genres = explode(', ', $review['genre']);
@@ -101,8 +102,7 @@ if (!isset($_SESSION['token'])) {
             <input type="hidden" name="reviewid" value="'.$review['id'].'" />
             <input type="hidden" name="nocsrf" value="'.$_SESSION['token'].'" />
             <input type="submit" value="Update" class="submit_review_btn" />
-        </form>
-    ';
+        </form>';
     ?>
 </div>    
 <?php include('./views/Footer.php'); ?>
