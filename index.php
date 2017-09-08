@@ -5,29 +5,37 @@ session_start();
 //Worked on Cloud9, but didn't on Heroku
 function __autoload($class_name) {
     if (file_exists('./classes/'.$class_name.'.php')) {
-        require_once './classes/'.$class_name.'.php';
+        echo "trying to require - ".$class_name."<br />";
+        require_once('./classes/'.$class_name.'.php');
+        echo "required - ".$class_name."<br />";
     } else if (file_exists('./controllers/'.$class_name.'.php')) {
-        require_once './controllers/'.$class_name.'.php';
+        echo "trying to require - ".$class_name."<br />";
+        require_once('./controllers/'.$class_name.'.php');
+        echo "required - ".$class_name."<br />";
     } else if (file_exists('./controllers/auth/'.$class_name.'.php')) {
-        require_once './controllers/auth/'.$class_name.'.php';
+        echo "trying to require - ".$class_name."<br />";
+        require_once('./controllers/auth/'.$class_name.'.php');
+        echo "required - ".$class_name."<br />";
+    } else {
+        echo "not exists - ".$class_name."<br />";
     }
 }
 
-spl_autoload_register('__autoload');
+//spl_autoload_register('__autoload');
 
 /*function my_autoloader($class_name) {
     if (file_exists('./classes/'.$class_name.'.php')) {
-        require_once './classes/'.$class_name.'.php';
+        require_once('./classes/'.$class_name.'.php');
     } else if (file_exists('./controllers/'.$class_name.'.php')) {
-        require_once './controllers/'.$class_name.'.php';
+        require_once('./controllers/'.$class_name.'.php');
     } else if (file_exists('./controllers/auth/'.$class_name.'.php')) {
-        require_once './controllers/auth/'.$class_name.'.php';
+        require_once('./controllers/auth/'.$class_name.'.php');
     }
-}*/ 
+}
 
-/*spl_autoload_register('my_autoloader');*/
+spl_autoload_register('my_autoloader');
 
-/*if(function_exists('__autoload')) {
+if(function_exists('__autoload')) {
     spl_autoload_register('__autoload');
 }*/
 
@@ -52,6 +60,13 @@ require_once('./controllers/auth/Google.php');
 require_once('./controllers/auth/Twitter.php');
 */
 
-require_once('./routes/Routes.php');
+if (file_exists('./routes/Routes.php')) {
+    echo "trying to require Routes";
+    require_once('./routes/Routes.php');
+    echo "routes Required";
+} else {
+    echo "routes file not found";
+}
+//require_once('./routes/Routes.php');
 
 ?>
