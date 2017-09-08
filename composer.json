@@ -3,5 +3,12 @@
         "abraham/twitteroauth": "^0.6.6",
         "facebook/graph-sdk": "^5.6",
         "google/apiclient": "^2.0"
+    },
+    "autoload": {
+        "classmap": [
+            "classes",
+            "controllers",
+            "controllers/auth"
+        ]
     }
 }
