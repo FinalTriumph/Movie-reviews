@@ -2,23 +2,24 @@
 
 class Database {
     
-    //Heroku
-    public static $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    public static $host = $url["host"];
-    public static $username = $url["user"];
-    public static $password = $url["pass"];
-    public static $dbname = substr($url["path"], 1);
-    //////////
-    
-    /* Cloud9
-    public static $host = '127.0.0.1';
-    public static $dbname = 'c9';
-    public static $username = 'finaltriumph';
-    public static $password = '';
-    */
-    
     private static function connect() {
-        $pdo = new PDO("mysql:host=".self::$host.";dbname=".self::$dbname.";charset=utf8", self::$username, self::$password);
+        
+        /* Cloud9
+        $host = '127.0.0.1';
+        $dbname = 'c9';
+        $username = 'finaltriumph';
+        $password = '';
+        */
+        
+        //Heroku
+        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+        $host = $url["host"];
+        $username = $url["user"];
+        $password = $url["pass"];
+        $dbname = substr($url["path"], 1);
+        //////////
+        
+        $pdo = new PDO("mysql:host=".$host.";dbname=".$dbname.";charset=utf8", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     }
