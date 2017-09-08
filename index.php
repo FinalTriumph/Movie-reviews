@@ -2,9 +2,8 @@
 
 session_start();
 
-require('vendor/autoload.php');
-
 function __autoload($class_name) {
+    echo "This is class name - ".$class_name." <br />"
     if (file_exists('./classes/'.$class_name.'.php')) {
         require_once './classes/'.$class_name.'.php';
         echo "required classes <br />";
