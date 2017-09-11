@@ -190,9 +190,6 @@ em {
     width: 9em;
     display: none;
 }
-.genres_options_active {
-    display: inline-block;
-}
 .genres_toggle {
     color: #ddd;
     background-color: #222;
@@ -795,4 +792,17 @@ em {
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
+/**/
+.page_link_div {
+    display: inline-block;
+    vertical-align: top;
+    margin: 1.7em 0.5em;
+    margin-bottom: 0.5em;
+}
+.page_link_div p1 {
+    color: #ddd;
+}
+.active_page_link {
+    color: #9b26af;
 }

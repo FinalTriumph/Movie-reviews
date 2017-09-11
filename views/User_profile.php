@@ -42,6 +42,11 @@
     echo '</h3><hr id="user_profile_hr"/>';
   
     if (count($reviews)) {
+        
+        $pageCount = ceil(count($reviews) / 12);
+    
+        $reviews = Review::pageReviews($reviews);
+        
         foreach ($reviews as $review) {
             $user = Login::userinfo($review['user_id']);
             $reviewText = $review['review'];
@@ -114,6 +119,27 @@
                 </div>
             </div>';
         }
+        echo "<br />";
+        if ($pageCount != 1) {
+            echo '<div class="page_link_div"><p1>Page: </p1></div>';
+            for ($i = 1; $i <= $pageCount; $i++) {
+                if ($i === 1) {
+                    if (isset($_GET['page'])) {
+                        echo '<a href="user?id='.$_GET['id'].'"><div class="page_link_div">'.$i.'</div></a>';
+                    } else {
+                        echo '<a href="user?id='.$_GET['id'].'"><div class="page_link_div active_page_link">'.$i.'</div></a>';
+                    }
+                } else {
+                    if (isset($_GET['page']) && $_GET['page'] == $i) {
+                        echo '<a href="user?id='.$_GET['id'].'&page='.$i.'"><div class="page_link_div active_page_link">'.$i.'</div></a>';
+                    } else {
+                        echo '<a href="user?id='.$_GET['id'].'&page='.$i.'"><div class="page_link_div">'.$i.'</div></a>';
+                    }
+                }
+                
+            }
+        }
+        
     } else {
         echo "<h3 id='user_no_reviews'>This user haven't added any reviews.</h3>";
     }

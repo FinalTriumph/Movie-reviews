@@ -63,6 +63,11 @@
     echo '</h3><hr id="genre_hr">';
   
     if (count($reviews)) {
+        
+        $pageCount = ceil(count($reviews) / 12);
+    
+        $reviews = Review::pageReviews($reviews);
+        
         foreach ($reviews as $review) {
             $user = Login::userinfo($review['user_id']);
             $reviewText = $review['review'];
@@ -134,6 +139,27 @@
                         <p1 class="pull-right stars_p"><img src="http://i.imgur.com/wHiJDFU.png" class="review_star_icon"> '.$review['stars'].'</p1><br />
                     </div>
                 </div>';
+        }
+        
+        echo "<br />";
+        if ($pageCount != 1) {
+            echo '<div class="page_link_div"><p1>Page: </p1></div>';
+            for ($i = 1; $i <= $pageCount; $i++) {
+                if ($i === 1) {
+                    if (isset($_GET['page'])) {
+                        echo '<a href="search?search='.$_GET['search'].'"><div class="page_link_div">'.$i.'</div></a>';
+                    } else {
+                        echo '<a href="search?search='.$_GET['search'].'"><div class="page_link_div active_page_link">'.$i.'</div></a>';
+                    }
+                } else {
+                    if (isset($_GET['page']) && $_GET['page'] == $i) {
+                        echo '<a href="search?search='.$_GET['search'].'&page='.$i.'"><div class="page_link_div active_page_link">'.$i.'</div></a>';
+                    } else {
+                        echo '<a href="search?search='.$_GET['search'].'&page='.$i.'"><div class="page_link_div">'.$i.'</div></a>';
+                    }
+                }
+                
+            }
         }
     } else {
         echo '<h3 id="genre_no_reviews">Nothing found.</h3>';

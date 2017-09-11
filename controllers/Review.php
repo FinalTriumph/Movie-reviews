@@ -233,6 +233,17 @@ class Review extends Controller {
             header("location: /");
         }
     }
+    
+    public static function pageReviews($reviews) {
+        $perPage = 12;
+        if (isset($_GET['page'])) {
+            $count = $_GET['page'] * $perPage - $perPage;
+            return array_slice($reviews, $count, $perPage);
+        } else {
+            return array_slice($reviews, 0, $perPage);
+        }
+    }
+    
 }
 
 ?>
