@@ -41,8 +41,8 @@
             <p class="left_m">Application is using <a href="https://www.themoviedb.org/documentation/api" target="_blank">TMDb API</a> to find movie posters by movie title and year (if poster can't be found, defaut image is added).</p>
         </div>
         <hr class="welcome_hr"/>
-        <p class="left_m">If any errors spotted, feel free to <a href="http://finaltriumph.tk/" target="_blank">contact me</a> and let me know.</p>
-        <p class="left_m">Made by <a href="http://finaltriumph.tk/" target="_blank">FinalTriumph</a>, 2017</p>
+        <p class="left_m">If any errors spotted, feel free to <a href="http://finaltriumph.eu/contact" target="_blank">contact me</a> and let me know.</p>
+        <p class="left_m">Made by <a href="http://finaltriumph.eu/" target="_blank">FinalTriumph</a>, 2017</p>
     </div>
 </div>
 
